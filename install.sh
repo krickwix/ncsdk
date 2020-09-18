@@ -44,7 +44,7 @@ function check_supported_os()
             exit 1
         fi
         [ "${VERBOSE}" = "yes" ] && echo "Installing on Ubuntu 16.04"
-    elif [ "${OS_DISTRO,,}" = "Raspbian" ] && [ ${OS_VERSION} -ge 10 ]; then
+    elif [ "${OS_DISTRO,,}" = "raspbian" ] ; then
         [ "${VERBOSE}" = "yes" ] && echo "Installing on Raspbian Stretch"
     elif [ "${OS_DISTRO,,}" = "raspbian" ] && [ ${OS_VERSION} -ge 80 ] && [ ${OS_VERSION} -lt 90 ]; then
         echo -e "${RED} You are running Raspbian Jessie, which is not supported by NCSDK."
@@ -429,7 +429,7 @@ function install_python_dependencies()
 #                   sets FIND_TENSORFLOW__FOUND_SUPPORTED_VERSION=2 when TensorFlow isn't installed
 function find_tensorflow()
 {
-    SUPPORTED_TENSORFLOW_VERSION=1.11.0
+    SUPPORTED_TENSORFLOW_VERSION=1.12.0
     RC=0
     $PIP_PREFIX pip3 show $1 1> /dev/null || RC=$?
     if [ $RC -eq 0 ]; then
